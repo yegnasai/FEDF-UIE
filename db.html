@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+    <div id="users">Users: 10</div>
+    <div id="cooldrinks">Cooldrinks: 0</div>
+    <div id="extra-items"></div>
+
+    <script>
+        let state = {
+            users: 10,
+            cooldrinks: 0,
+            // Object to store values for the 10 new items
+            extras: {} 
+        };
+
+        function render1() {
+            document.getElementById("users").innerText = "Users: " + state.users;
+        }
+
+        function render2() {
+            document.getElementById("cooldrinks").innerText = "Cooldrinks: " + state.cooldrinks;
+        }
+
+        // Existing Intervals
+        setInterval(() => {
+            state.users++;
+            render1();
+        }, 2000);
+
+        setInterval(() => {
+            state.cooldrinks++;
+            render2();
+        }, 1000);
+
+        // --- TASK: ADD 10 MORE ITEMS WITH DIFFERENT TIME INTERVALS ---
+        const itemNames = [
+            "Pizza", "Burgers", "Coffee", "Teas", "Icecreams", 
+            "Shakes", "Sandwiches", "Fries", "Salads", "Donuts"
+        ];
+
+        const container = document.getElementById("extra-items");
+
+        itemNames.forEach((name, index) => {
+            // 1. Initialize state
+            state.extras[name] = 0;
+
+            // 2. Create UI element
+            const div = document.createElement("div");
+            div.id = name.toLowerCase();
+            div.innerText = `${name}: 0`;
+            container.appendChild(div);
+
+            // 3. Set unique interval (e.g., 500ms, 1500ms, 2500ms, etc.)
+            const intervalTime = (index + 1) * 500; 
+            
+            setInterval(() => {
+                state.extras[name]++;
+                div.innerText = `${name}: ${state.extras[name]}`;
+            }, intervalTime);
+        });
+
+        // Initial render
+        render1();
+        render2();
+    </script>
+</body>
+</html>
