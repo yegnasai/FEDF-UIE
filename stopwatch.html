@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stopwatch</title>
+</head>
+<body>
+
+    <h2>Stopwatch</h2>
+
+    <h1>
+        <span id="sec">00</span> :
+        <span id="ms">00</span>
+    </h1>
+
+    <button onclick="start()">Start</button>
+    <button onclick="pause()">Pause</button>
+    <button onclick="reset()">Reset</button>
+
+    <script>
+        let sec = 0, ms = 0, interval;
+
+        function start() {
+            clearInterval(interval);
+            interval = setInterval(() => {
+                ms++;
+
+                if (ms == 100) {
+                    sec++;
+                    ms = 0;
+                }
+
+                document.getElementById("sec").innerText = sec.toString().padStart(2, '0');
+                document.getElementById("ms").innerText = ms.toString().padStart(2, '0');
+            }, 10);
+        }
+
+        function pause() {
+            clearInterval(interval);
+        }
+
+        function reset() {
+            clearInterval(interval);
+            sec = 0;
+            ms = 0;
+
+            document.getElementById("sec").innerText = "00";
+            document.getElementById("ms").innerText = "00";
+        }
+    </script>
+
+</body>
+</html>
