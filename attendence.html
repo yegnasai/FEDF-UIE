@@ -1,0 +1,65 @@
+let students = [];
+
+function renderTable() {
+    const tableBody = document.getElementById("tableBody");
+    tableBody.innerHTML = "";
+
+    students.forEach((student, index) => {
+        const row = `
+            <tr>
+                <td>${student.id}</td>
+                <td>${student.name}</td>
+                <td>${student.status === "true" ? "Present" : "Absent"}</td>
+                <td>
+                    <button onclick="deleteStudent(${index})">Delete</button>
+                </td>
+            </tr>
+        `;
+        tableBody.innerHTML += row;
+    });
+}
+
+function addStudent() {
+    const id = document.getElementById("id").value;
+    const name = document.getElementById("name").value;
+    const status = document.getElementById("status").value;
+
+    if (id && name) {
+        students.push({ id, name, status });
+        renderTable();
+        // Clear inputs
+        document.getElementById("id").value = "";
+        document.getElementById("name").value = "";
+    } else {
+        alert("Please enter both ID and Name");
+    }
+}
+
+function updateStudent() {
+    const id = document.getElementById("id").value;
+    const name = document.getElementById("name").value;
+    const status = document.getElementById("status").value;
+
+    const index = students.findIndex(s => s.id === id);
+    if (index !== -1) {
+        students[index] = { id, name, status };
+        renderTable();
+    } else {
+        alert("Student ID not found!");
+    }
+}
+
+function deleteStudent(index) {
+    students.splice(index, 1);
+    renderTable();
+}
+
+// Placeholder functions for your DOM vs VDOM buttons
+function updateDOM() {
+    console.log("Updating using standard DOM manipulation...");
+    renderTable();
+}
+
+function updateVDOM() {
+    console.log("Virtual DOM logic would go here (usually requires a library like React).");
+}
