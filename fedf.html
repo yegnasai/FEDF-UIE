@@ -1,0 +1,31 @@
+<DOCTYPE html>
+    <html>
+        <head>
+            <title>Spread Operator Example</title>
+        </head>
+    <body>
+        <h2>JavaScript Spread Operator</h2>
+        <button onclick="showData()">Show Data</button>
+        <p id = "output"></p>
+        <script>
+            function showData(){
+                const INSEM1 = [80, 90, 95, 96];
+                const INSEM2 = [95, 100, 96, 98];
+                const allMarks = [...INSEM1, ...INSEM2];
+                const student = {
+                    name: "Mohith",
+                    regno: 2520030001
+                };
+                const updatedStudent = {
+                    ...student,
+                    course: "React JS"
+                };
+                document.getElementById("output").innerHTML = `All Marks: ${allMarks} <br><br>
+                Name: ${updatedStudent.name} <br>
+                Reg No: ${updatedStudent.regno} <br>
+                Course: ${updatedStudent.course}`;
+            }
+        </script>
+    </body>
+       
+    </html>
