@@ -1,0 +1,24 @@
+<DOCTYPE html>
+    <html>
+        <head>
+            <title>Closure Counter</title>
+        </head>
+        <body>
+            <h2>Visitor Counter using closure</h2>
+            <button onclick="counterVisitor()">Visit</button>
+            <h3 id="output">0</h3>
+            <script>
+                function createCounter() {
+                    let visitors = 0;
+                    return function() {
+                        visitors++;
+                        return visitors;
+                    }
+                }
+                const counter = createCounter();
+                function counterVisitor() {
+                    document.getElementById("output").innerHTML = counter();
+                }
+                </script>
+        </body>
+    </html>
