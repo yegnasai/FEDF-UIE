@@ -1,0 +1,38 @@
+<DOCTYPE html>
+    <html>
+        <head>
+            <title>ES6 features</title>
+        </head>
+        <body>
+            <h2>ES6+ Essentials Spread Operator</h2>
+            <button onclick="showData()">
+                <button>
+                    <h1 id="output"></h1>
+        <script>
+            const student = {
+                name: "Mohith",
+                regno: "2520030001"
+            };
+            const INSEM1 = [80, 90, 95, 96];
+            const INSEM2 = [95, 100, 96, 98];
+            function showData(){
+                let {name, regno} = student;
+                const TotalMarks = [...INSEM1, ...INSEM2];
+                const calculateAverage = (marks) => {
+                    let total = marks.reduce((sum, mark) => sum + mark, 0);
+                    return total / marks.length;
+                };
+                const result = calculateAverage(...TotalMarks);
+                document.getElementById("output").innerHTML =
+                ` Name: ${name} <br>
+                Reg No: ${regno} <br><br>
+                INSEM1 Marks: ${INSEM1} <br>
+                INSEM2 Marks: ${INSEM2} <br><br>
+                Total Marks: ${TotalMarks} <br><br>
+                Average: ${result.toFixed(2)} <br>
+                `;
+                
+            };
+                </script>
+                </body>
+                </html>
