@@ -1,0 +1,25 @@
+html>
+<body>
+    <input id="num1" type="number">
+    <input id="num2" type="number">
+    <button onclick="calc('+')">+</button>
+    <button onclick="calc('-')">-</button>
+    <button onclick="calc('')"></button>
+    <button onclick="calc('/')">/</button>
+    <h2 id="result"></h2>
+    
+    <script>
+        function calc(op) {
+            let a = Number(num1.value);
+            let b = Number(num2.value);
+            let res;
+            
+            if(op === '+') res = a + b;
+            if(op === '-') res = a - b;
+            if(op === '*') res = a * b;
+            if(op === '/') res = a / b;
+            result.innerText = res;
+        }
+    </script>
+</body>
+</html>
