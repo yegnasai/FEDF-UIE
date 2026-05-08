@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>Pure function  </h2>
+    <button onclick="calculation()">calculate</button>
+
+    <p id="output"></p>
+    <script>
+
+        function calculateTotal(price,tax){
+            return price + tax;
+        }
+
+        function calculation(){
+            const result1=calculateTotal(100,10);
+
+            const result2=calculateTotal(100,10);
+
+
+            document.getElementById("output").innerHTML='First Call: ${result1}Second Call: ${result2}';
+
+        }
+    </script>
+     
+
+</body>
+</html>
